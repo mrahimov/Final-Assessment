@@ -41,7 +41,7 @@ public class PhotoActivity extends AppCompatActivity {
       case R.id.logout:
         sharedPreferences.edit().remove(LoginActivity.PASSWORD_NAME_KEY).apply();
         finish();
-        Intent intent = new Intent(PhotoActivity.this, LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         return true;
       default:

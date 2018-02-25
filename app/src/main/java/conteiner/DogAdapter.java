@@ -32,7 +32,7 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
   @Override
   public void onBindViewHolder(final DogAdapter.ViewHolder holder, int position) {
     final String url = images.get(position);
-    Picasso.with(holder.imageView.getContext()).load(url).into(holder.imageView);
+    Picasso.with(holder.imageView.getContext()).load(url).fit().into(holder.imageView);
     holder.imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

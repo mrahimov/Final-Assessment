@@ -1,7 +1,7 @@
 package network;
 
 import models.DogImage;
-import models.ModelBREEDS_KEYResponce;
+import models.ModelResponce;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -12,5 +12,5 @@ public interface DogService {
   Call<DogImage> getDogImage(@Path("breed-name") String breed);
 
   @GET("/api/breed/{breed-name}/images")
-  Call<ModelBREEDS_KEYResponce> getDogThumbnails(@Path("breed-name") String breed);
+  Call<ModelResponce> getDogThumbnails(@Path("breed-name") String breed);
 }

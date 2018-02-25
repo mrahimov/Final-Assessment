@@ -9,10 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import conteiner.DogAdapter;
 import java.util.List;
-import models.ModelBREEDS_KEYResponce;
+import models.ModelResponce;
 import network.DogService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,12 +23,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DogActivity extends AppCompatActivity {
 
+  private EditText password;
+  private EditText email;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_dog);
 
     TextView breedTV = findViewById(R.id.breed);
+    email = findViewById(R.id.email);
+    password = findViewById(R.id.password);
     final RecyclerView recyclerView = findViewById(R.id.images);
     final DogAdapter adapter = new DogAdapter();
     recyclerView.setAdapter(adapter);
@@ -42,18 +48,18 @@ public class DogActivity extends AppCompatActivity {
 
     DogService service = retrofit.create(DogService.class);
 
-    Call<ModelBREEDS_KEYResponce> call = service.getDogThumbnails(breed);
+    Call<ModelResponce> call = service.getDogThumbnails(breed);
 
-    call.enqueue(new Callback<ModelBREEDS_KEYResponce>() {
+    call.enqueue(new Callback<ModelResponce>() {
       @Override
-      public void onResponse(Call<ModelBREEDS_KEYResponce> call, Response<ModelBREEDS_KEYResponce> response) {
+      public void onResponse(Call<ModelResponce> call, Response<ModelResponce> response) {
         List<String> images = response.body().getMessage();
         adapter.setData(images);
         adapter.notifyDataSetChanged();
       }
 
       @Override
-      public void onFailure(Call<ModelBREEDS_KEYResponce> call, Throwable t) {
+      public void onFailure(Call<ModelResponce> call, Throwable t) {
       }
     });
   }
@@ -68,13 +74,14 @@ public class DogActivity extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.USER_NAME_KEY, MODE_PRIVATE);
-
     switch (item.getItemId()) {
       case R.id.logout:
         sharedPreferences.edit().remove(LoginActivity.PASSWORD_NAME_KEY).apply();
         finish();
-        Intent intent = new Intent(DogActivity.this, LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
+        email.setText("");
+        password.setText("");
         return true;
       default:
         return super.onOptionsItemSelected(item);
