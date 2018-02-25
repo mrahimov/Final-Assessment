@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Final Assessment</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="user_name_is_empty">please enter username</string>
+    <string name="password_is_empty">please enter a password</string>
+    <string name="empty_user_name">please enter your username</string>
+    <string name="user_name">username</string>
+    <string name="password">password</string>
+    <string name="question_mark">"?"</string>
+    <string name="springer">"springer"</string>
+    <string name="sheepdog">"sheepdog"</string>
+    <string name="retriever">"retriever"</string>
+    <string name="hound">"hound"</string>
+    <string name="logout">"logout"</string>
+    <string name="submit">submit</string>
+    <string name="email">Email</string>
 </resources>
