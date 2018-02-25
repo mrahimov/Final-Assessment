@@ -23,17 +23,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DogActivity extends AppCompatActivity {
 
-  private EditText password;
-  private EditText email;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_dog);
 
     TextView breedTV = findViewById(R.id.breed);
-    email = findViewById(R.id.email);
-    password = findViewById(R.id.password);
     final RecyclerView recyclerView = findViewById(R.id.images);
     final DogAdapter adapter = new DogAdapter();
     recyclerView.setAdapter(adapter);
@@ -80,8 +75,6 @@ public class DogActivity extends AppCompatActivity {
         finish();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
-        email.setText("");
-        password.setText("");
         return true;
       default:
         return super.onOptionsItemSelected(item);

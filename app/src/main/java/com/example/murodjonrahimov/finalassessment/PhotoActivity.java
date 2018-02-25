@@ -7,9 +7,9 @@ package com.example.murodjonrahimov.finalassessment;
   import android.view.Menu;
   import android.view.MenuInflater;
   import android.view.MenuItem;
+  import android.widget.EditText;
   import android.widget.ImageView;
   import com.squareup.picasso.Picasso;
-  import conteiner.DogAdapter;
 
   import static conteiner.DogAdapter.URL_KEY;
 
@@ -36,7 +36,6 @@ public class PhotoActivity extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.USER_NAME_KEY, MODE_PRIVATE);
-
     switch (item.getItemId()) {
       case R.id.logout:
         sharedPreferences.edit().remove(LoginActivity.PASSWORD_NAME_KEY).apply();
